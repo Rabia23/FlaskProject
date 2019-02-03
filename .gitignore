@@ -1,0 +1,11 @@
+### Byte-compiled / optimized / DLL files
+__pycache__/
+
+### Python artifacts
+*.pyc
+
+### OS X artifacts
+*.DS_Store
+
+### Editor and IDE artifacts
+.idea/
