@@ -1,38 +1,14 @@
-__author__ = 'rabia'
+"""
+Command for running the application
+"""
 
-# └── dream-team
-#     ├── app
-#     │   ├── __init__.py
-#     │   ├── admin
-#     │   │   ├── __init__.py
-#     │   │   ├── forms.py
-#     │   │   └── views.py
-#     │   ├── auth
-#     │   │   ├── __init__.py
-#     │   │   ├── forms.py
-#     │   │   └── views.py
-#     │   ├── home
-#     │   │   ├── __init__.py
-#     │   │   └── views.py
-#     │   ├── models.py
-#     │   ├── static
-#     │   └── templates
-#     ├── config.py
-#     ├── instance
-#     │   └── config.py
-#     ├── migrations
-#     │   ├── README
-#     │   ├── alembic.ini
-#     │   ├── env.py
-#     │   ├── script.py.mako
-#     │   └── versions
-#     │       └── a1a1d8b30202_.py
-#     ├── requirements.txt
-#     └── run.py
-from app import create_app
+# local imports
 from config import DevelopmentConfig
 
-app = create_app(DevelopmentConfig)
+from app import create_app
+
+# main entry point of the app
+app = create_app(DevelopmentConfig)  # pylint: disable=invalid-name
 
 
 if __name__ == '__main__':

@@ -1,14 +1,23 @@
-from flask_script import Manager
+"""
+Command for running migrations
+"""
+
+# third-party imports
 from flask_migrate import Migrate, MigrateCommand
-from app.db import db
+from flask_script import Manager
+
+# local imports
 from config import DevelopmentConfig
 from run import create_app
 
-app = create_app(DevelopmentConfig)
+from app.db import db
 
+# create app object
+app = create_app(DevelopmentConfig)  # pylint: disable=invalid-name
 
-migrate = Migrate(app, db)
-manager = Manager(app)
+# create migrate object to run db migrations
+migrate = Migrate(app, db)  # pylint: disable=invalid-name
+manager = Manager(app)      # pylint: disable=invalid-name
 manager.add_command('db', MigrateCommand)
 
 
