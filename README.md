@@ -1,3 +1,10 @@
+## Summary:
+The REST APIs are built using Python Flask framework. Docker containers are used for development environment.
+
+It contains the below mentioned endpoints:
+- a POST '/grab_and_save'
+- a GET '/last'
+
 ## Project Structure:
 ```bash
 flask-app/
@@ -31,6 +38,16 @@ flask-app/
 └── run.py
 ```
 
+### Python extensions used:
+- **flask** - This is a microframework for Python
+- **flask_restful** - This is an extension for Flask that adds support for quickly building of REST APIs.
+- **flask_script** - This is an extension that provides support for writing external scripts in Flask.
+- **flask_migrate** - This is an extension that handles SQLAlchemy database migrations for Flask applications using Alembic.
+- **flask_sqlalchemy** - This is an extension for Flask that adds support for SQLAlchemy. It allows to write ORM queries to operate against database.
+- **flask_marshmallow** - This is an integration layer for Flask and marshmallow (ORM/ODM/framework-agnostic library for converting complex datatypes, such as objects, to and from native Python datatypes. This is used also to Serializing and Deserializing Objects.) that adds additional features to marshmallow.
+- **mysqlclient** - MySQL database connector for Python
+- **requests** - This is a python library to make calls to external APIs
+
 ### How to start application (using Docker)
 - Clone the project using command:
     ```
@@ -40,6 +57,22 @@ flask-app/
     ```
     make up
     ```
+
+### How to ssh into a Docker containers
+- ssh into app container
+    ```
+    make app-shell
+    ```
+- ssh into database container
+    ```
+    make db-shell
+    root@e27d5a54fbb8:/# mysql -u root -p
+    Enter password: root
+    mysql> show databases;
+    mysql> use testdb;
+    mysql> show tables;
+    mysql> select * from wallets;
+    ````
 
 ### Test using CURL
 - curl -H "Content-Type: application/json" -X POST -d '{"currency_code": "AED", "requested_amount": 19.7654}' http://127.0.0.1:5000/api/grab_and_save
@@ -70,3 +103,13 @@ flask-app/
     ```
     {"message": null, "response": [{"requested_amount": 19.7654, "currency_code": "AED", "created_on": "2019-02-05T11:10:58+00:00", "id": 4, "updated_on": "2019-02-05T11:10:58+00:00", "open_exchange_price": 3.67328, "final_amount": 72.6039}, {"requested_amount": 19.7654, "currency_code": "AED", "created_on": "2019-02-05T10:18:42+00:00", "id": 3, "updated_on": "2019-02-05T10:18:42+00:00", "open_exchange_price": 3.67316, "final_amount": 72.6014}], "success": true}
     ```
+
+### Additions and Improvements
+If I have more time then I want to implement these things which are although beyond the scope of the task. 
+
+
+- Add PUT and DELETE functionality.
+- Add Unit tests for APIs.
+- Create a page that uses an ajax request call to the /last endpoint and shows the response in a nice way.
+- Secure the API endpoints by proper authentication mechanism so that only authenticated users can access it.
+For the sake of this task I have used 0.0.0.0:5000 to run the server but in production these values should be passed along as environment variables.
