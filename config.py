@@ -1,27 +1,20 @@
+"""
+Configuration file for the application.
+"""
+
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
+
+basedir = os.path.abspath(os.path.dirname(__file__))  # pylint: disable=invalid-name
 
 
 class Config(object):
+    """
+    Common configurations
+    """
+    # Put any configurations here that are common across all environments
     DEBUG = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = False
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
-
-
-class ProductionConfig(Config):
-    DEBUG = False
-
-
-class StagingConfig(Config):
-    DEBUG = True
-
-
-class DevelopmentConfig(Config):
-    DEBUG = True
-    SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_ECHO = True
     SECRET_KEY = os.environ['SECRET_KEY']
     DB_USERNAME = os.environ['MYSQL_USER']
     DB_PASSWORD = os.environ['MYSQL_PASSWORD']
@@ -31,3 +24,25 @@ class DevelopmentConfig(Config):
     MYSQL_ROOT_PASSWORD = os.environ['MYSQL_ROOT_PASSWORD']
     SQLALCHEMY_DATABASE_URI = DB_URI
 
+
+class ProductionConfig(Config):
+    """
+    Production configurations
+    """
+    DEBUG = False
+
+
+class StagingConfig(Config):
+    """
+    Staging configurations
+    """
+    DEBUG = True
+
+
+class DevelopmentConfig(Config):
+    """
+    Development configurations
+    """
+    DEBUG = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SQLALCHEMY_ECHO = True

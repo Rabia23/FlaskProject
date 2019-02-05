@@ -1,11 +1,14 @@
-__author__ = 'rabia'
+"""
+Models for the Api app
+"""
 
+# local imports
 from app.db import db
 
 
 class Wallet(db.Model):
     """
-    Create a Wallet table
+    This class represents the wallet table.
     """
 
     # Ensures table will be named in plural and not in singular as in
@@ -22,3 +25,7 @@ class Wallet(db.Model):
 
     def __repr__(self):
         return '<id: {}>'.format(self.id)
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
