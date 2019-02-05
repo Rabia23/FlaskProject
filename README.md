@@ -5,9 +5,11 @@ It contains the below mentioned endpoints:
 - a POST '/grab_and_save'
 - a GET '/last'
 
-## Project Structure:
+There are many ways to setup your project folder structure. One is by its function and another is app based structure which means things are grouped bp application. I have used app based approach for this task.
+
+## Project Structure (App Based):
 ```bash
-flask-app/
+flask-application/
 ├── Dockerfile
 ├── Makefile
 ├── README.md
@@ -52,6 +54,10 @@ flask-app/
 - Clone the project using command:
     ```
     git clone https://github.com/Rabia23/FlaskProject.git
+    ```
+- Go into the project directory:
+    ```
+    cd flask-application
     ```
 - Run the application by the following command:
     ```
@@ -103,13 +109,17 @@ flask-app/
     ```
     {"message": null, "response": [{"requested_amount": 19.7654, "currency_code": "AED", "created_on": "2019-02-05T11:10:58+00:00", "id": 4, "updated_on": "2019-02-05T11:10:58+00:00", "open_exchange_price": 3.67328, "final_amount": 72.6039}, {"requested_amount": 19.7654, "currency_code": "AED", "created_on": "2019-02-05T10:18:42+00:00", "id": 3, "updated_on": "2019-02-05T10:18:42+00:00", "open_exchange_price": 3.67316, "final_amount": 72.6014}], "success": true}
     ```
+ - curl -X GET "http://127.0.0.1:5000/api/last?currency_code=AFB"
+    ```
+    {"success": true, "response": {}, "message": "Does Not Exists"}
+    ```
 
 ### Additions and Improvements
-If I have more time then I want to implement these things which are although beyond the scope of the task. 
+If I have more time then I want to implement these things which are although beyond the scope of the task.
 
 
 - Add PUT and DELETE functionality.
 - Add Unit tests for APIs.
 - Create a page that uses an ajax request call to the /last endpoint and shows the response in a nice way.
 - Secure the API endpoints by proper authentication mechanism so that only authenticated users can access it.
-For the sake of this task I have used 0.0.0.0:5000 to run the server but in production these values should be passed along as environment variables.
+- For the sake of this task I have used 0.0.0.0:5000 to run the server but in production these values should be passed along as environment variables.
