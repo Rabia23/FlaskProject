@@ -9,7 +9,7 @@ There are many ways to setup your project folder structure. One is by its functi
 
 ## Project Structure (App Based):
 ```bash
-flask-application/
+FlaskProject/
 ├── Dockerfile
 ├── Makefile
 ├── README.md
@@ -113,13 +113,3 @@ flask-application/
     ```
     {"success": true, "response": {}, "message": "Does Not Exists"}
     ```
-
-### Additions and Improvements
-If I have more time then I want to implement these things which are although beyond the scope of the task.
-
-
-- Add PUT and DELETE functionality.
-- Add Unit tests for APIs.
-- Create a page that uses an ajax request call to the /last endpoint and shows the response in a nice way.
-- Secure the API endpoints by proper authentication mechanism so that only authenticated users can access it.
-- For the sake of this task I have used 0.0.0.0:5000 to run the server but in production these values should be passed along as environment variables.
